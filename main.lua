@@ -128,7 +128,7 @@ function CreateArmes(pID, pNom, pImage, pMunition, pMaxMun)
 end
 
 function CreateObjects(pID, pNom, pImage, pX, pY, pQuantite)
-	
+
 	objet = {}
 	objet.Id = pID
 	objet.Nom = pNom
@@ -212,7 +212,7 @@ function MovePlayer()
 		Player.Y = Player.Y + Player.Speed
 	end
 
-	if love.keyboard.isDown('q') then		
+	if love.keyboard.isDown('q') then
 		Player.X = Player.X - Player.Speed
 	end
 
@@ -223,7 +223,7 @@ end
 
 function Tir()
 
-	CreateTirs("", Player.X, Player.Y - 50, 10, -10)	
+	CreateTirs("", Player.X, Player.Y - 50, 10, -10)
 
 end
 
@@ -231,24 +231,24 @@ function love.update()
 
 	if ObjEquipe == "CIGARETTE" then
 		DecremantLife()
-	end	
+	end
 
 	MovePlayer()
 
-	if love.keyboard.isDown("rctrl") then		
+	if love.keyboard.isDown("rctrl") then
 		if BoolEquipArme == false then
 			BoolEquipArme = true
 		end
-		BoolInvArmes = true	
+		BoolInvArmes = true
 	else
 		BoolInvArmes = false
 	end
 
-	if love.keyboard.isDown("lctrl") then		
+	if love.keyboard.isDown("lctrl") then
 		if BoolEquipObject == false then
 			BoolEquipObject = true
 		end
-		BoolInvObjects = true	
+		BoolInvObjects = true
 	else
 		BoolInvObjects = false
 	end
@@ -290,7 +290,7 @@ function love.draw()
 	-- Map
 
 	-- Affichage stat Player
-	love.graphics.print("Life "..Player.Vie, 125, 10)	
+	love.graphics.print("Life "..Player.Vie, 125, 10)
 
 	-- Objets de la zone
 	for i=1, #LstObjects do
@@ -310,7 +310,7 @@ function love.draw()
 	love.graphics.draw(Player.Image, Player.X, Player.Y, 0, Player.Scale, Player.Scale)
 
 	-- Tirs
-	for j=1, #Tirs do		
+	for j=1, #Tirs do
 		love.graphics.circle("fill", Tirs[j].X, Tirs[j].Y, 10 ,10)
 	end
 
@@ -339,7 +339,7 @@ function love.keypressed(key)
 			Tir()
 			InventaireArmes[CptArmes].Munition = InventaireArmes[CptArmes].Munition - 1
 		end
-		
+
 	end
 
 	if BoolInvArmes then
@@ -347,12 +347,12 @@ function love.keypressed(key)
 			if CptArmes > 1 then
 				CptArmes = CptArmes - 1
 			else
-				CptArmes = #InventaireArmes			
+				CptArmes = #InventaireArmes
 			end
 		end
 		if key == "down" then
 			if CptArmes < #InventaireArmes then
-				CptArmes = CptArmes + 1			
+				CptArmes = CptArmes + 1
 			else
 				CptArmes = 1
 			end
@@ -364,12 +364,12 @@ function love.keypressed(key)
 			if CptObjects > 1 then
 				CptObjects = CptObjects - 1
 			else
-				CptObjects = #InvObjects			
+				CptObjects = #InvObjects
 			end
 		end
 		if key == "down" then
 			if CptObjects < #InvObjects then
-				CptObjects = CptObjects + 1			
+				CptObjects = CptObjects + 1
 			else
 				CptObjects = 1
 			end
